@@ -1,5 +1,12 @@
 #include "tcpserver.h"
 
+/***********************************************
+   > Author: 裴浩东
+   > Date: 2026.01.22
+   > GitHub: https://github.com/peihaodong/Protocol.git
+   > Remark: 如果对你有帮助，请帮我在GitHub上点个Star
+**********************************************/
+
 TcpServer::TcpServer(quint16 nServerPort, QObject *parent /*= nullptr*/)
 	: QObject(parent), m_nServerPort(nServerPort)
 {

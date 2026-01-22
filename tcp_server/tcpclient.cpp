@@ -1,5 +1,12 @@
 #include "tcpclient.h"
 
+/***********************************************
+   > Author: 裴浩东
+   > Date: 2026.01.22
+   > GitHub: https://github.com/peihaodong/Protocol.git
+   > Remark: 如果对你有帮助，请帮我在GitHub上点个Star
+**********************************************/
+
 TcpClient::TcpClient(QTcpSocket* socket, const QString& strClientIP, quint16 nClientPort, QObject *parent /*= nullptr*/)
 	: QObject(parent), m_socket(socket), m_strClientIP(strClientIP), m_nClientPort(nClientPort)
 {

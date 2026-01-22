@@ -7,6 +7,13 @@
 #include <QSharedMemory>
 #include <QTimer>
 
+/***********************************************
+   > Author: 裴浩东
+   > Date: 2026.01.22
+   > GitHub: https://github.com/peihaodong/Protocol.git
+   > Remark: 如果对你有帮助，请帮我在GitHub上点个Star
+**********************************************/
+
 void InitApp()
 {
 	//创建主窗口

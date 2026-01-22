@@ -3,6 +3,13 @@
 #include <QMainWindow>
 #include "ui_mainwindow.h"
 
+/***********************************************
+   > Author: 裴浩东
+   > Date: 2026.01.22
+   > GitHub: https://github.com/peihaodong/Protocol.git
+   > Remark: 如果对你有帮助，请帮我在GitHub上点个Star
+**********************************************/
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindowClass; };
 QT_END_NAMESPACE

@@ -9,6 +9,13 @@
 #include <QTimer>
 #include "chatprotocol.h"
 
+/***********************************************
+   > Author: 裴浩东
+   > Date: 2026.01.22
+   > GitHub: https://github.com/peihaodong/Protocol.git
+   > Remark: 如果对你有帮助，请帮我在GitHub上点个Star
+**********************************************/
+
 class TcpClient  : public QObject
 {
 	Q_OBJECT

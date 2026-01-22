@@ -175,7 +175,8 @@ void TcpClient::DisposeHeartbeatReply(protocol::PProtocolHeartbeatReply reply)
 
 void TcpClient::DisposeChatReply(protocol::PProtocolChatReply reply)
 {
-
+	QString msg = QString("[%1:%2] %3").arg(reply->m_strClientIP).arg(reply->m_nClientPort).arg(reply->m_string);
+	emit signalMessage(msg);
 }
 
 bool TcpClient::IsProcessRunning(const QString& processName)
@@ -298,12 +299,14 @@ void TcpClientManager::SendMsg(const protocol::PProtocol& protocol)
 
 void TcpClientManager::slotInit()
 {
-	if (!m_clientTCP)
+	if (m_clientTCP)
 		return;
 
 	m_clientTCP = TcpClient::New();
 	connect(m_clientTCP.get(), &TcpClient::signalConnectStatus, this, &TcpClientManager::slotConnectStatus);
 	qRegisterMetaType<protocol::PProtocolHeartbeatReply>("protocol::PProtocolHeartbeatReply");
+
+	connect(m_clientTCP.get(), &TcpClient::signalMessage, this, &TcpClientManager::signalMessage);
 }
 
 void TcpClientManager::slotSendMsg(const protocol::PProtocol& protocol)

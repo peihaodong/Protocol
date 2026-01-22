@@ -19,6 +19,22 @@ MainWindow::~MainWindow()
 	delete ui;
 }
 
+void MainWindow::slotMessage(QString msg, QColor colorText /*= QColor(0, 0, 0)*/, QColor colorBackground /*= QColor(255, 255, 255)*/)
+{
+	QListWidgetItem* pItem = new QListWidgetItem();
+	QString strInfo = QString("%1 | %2").arg(QDateTime::currentDateTime().toString("hh:mm:ss zzz")).arg(msg);
+	pItem->setText(strInfo);
+	pItem->setTextColor(colorText);
+	pItem->setBackgroundColor(colorBackground);
+	ui->listWidget->addItem(pItem);
+	if (ui->listWidget->count() > m_nRowsLimit)
+	{
+		auto p = ui->listWidget->takeItem(0);
+		delete p;
+	}
+	ui->listWidget->scrollToBottom();
+}
+
 void MainWindow::slotSendPB()
 {
 	QString strText = ui->textEdit->toPlainText();
@@ -34,22 +50,6 @@ void MainWindow::slotSendPB()
 	pTcpClientManager->SendMsg(ask);
 
 	ui->textEdit->setText("");
-}
-
-void MainWindow::slotMessage(QString msg, QColor colorText /*= QColor(0, 0, 0)*/, QColor colorBackground /*= QColor(255, 255, 255)*/)
-{
-	QListWidgetItem* pItem = new QListWidgetItem();
-	QString strInfo = QString("%1 | %2").arg(QDateTime::currentDateTime().toString("hh:mm:ss zzz")).arg(msg);
-	pItem->setText(strInfo);
-	pItem->setTextColor(colorText);
-	pItem->setBackgroundColor(colorBackground);
-	ui->listWidget->addItem(pItem);
-	if (ui->listWidget->count() > m_nRowsLimit)
-	{
-		auto p = ui->listWidget->takeItem(0);
-		delete p;
-	}
-	ui->listWidget->scrollToBottom();
 }
 
 void MainWindow::InitUI()
@@ -68,4 +68,6 @@ void MainWindow::InitTCP()
 	}
 
 	TcpClientManager* pTcpClientManager = TcpClientManager::GetInstance();
+
+	connect(pTcpClientManager, &TcpClientManager::signalMessage, this, &MainWindow::slotMessage);
 }

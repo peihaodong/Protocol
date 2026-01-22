@@ -30,6 +30,8 @@ signals:
 	void signalClose();
 	void signalConnectStatus(bool bConnect);
 
+	void signalMessage(QString msg, QColor colorText = QColor(0, 0, 0), QColor colorBackground = QColor(255, 255, 255));
+
 protected slots:
 	void slotInit();
 	void slotConnect(QString strServerIP, quint16 nServerPort);
@@ -81,6 +83,8 @@ signals:
 	void signalInit();
 	void signalSendMsg(const protocol::PProtocol& protocol);
 	void signalTcpClientConnectStatus(bool bConnect);
+
+	void signalMessage(QString msg, QColor colorText = QColor(0, 0, 0), QColor colorBackground = QColor(255, 255, 255));
 
 protected slots:
 	void slotInit();

@@ -16,8 +16,10 @@ public:
 	~MainWindow();
 
 protected slots:
-	void slotSendPB();
 	void slotMessage(QString msg, QColor colorText = QColor(0, 0, 0), QColor colorBackground = QColor(255, 255, 255));
+
+	//·¢ËÍ°´Å¥²Ûº¯Êý
+	void slotSendPB();
 
 protected:
 	void InitUI();

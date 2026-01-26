@@ -9,3 +9,10 @@ SUBDIRS += \
 		protocol \
 		tcp_server \
 		tcp_client
+		
+# 声明依赖关系
+tcp_server.depends = protocol
+tcp_client.depends = protocol
+
+# 指定启动项目
+tcp_client.CONFIG += run_first
